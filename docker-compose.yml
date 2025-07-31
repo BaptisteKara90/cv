@@ -1,20 +1,20 @@
 version: "3.8"
 
 services:
-  php:
+  symfony-php:
     build:
-      context: ./docker/php
+      context: ./backend/docker/php
       dockerfile: Dockerfile
     container_name: symfony-php
     volumes:
-      - ./symfony:/var/www/html
+      - ./backend/symfony:/var/www/html
     working_dir: /var/www/html
     ports:
       - "8000:8000"
     depends_on:
       - db
     environment:
-      DATABASE_URL: "pgsql://symfony:symfony@db:5432/symfony"
+      DATABASE_URL: "pgsql://symfonyUser:symfonyPassword@db:5432/symfonyCv"
     command: php -S 0.0.0.0:8000 -t public
 
   db:

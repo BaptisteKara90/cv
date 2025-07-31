@@ -1,5 +1,5 @@
-PHP_CONTAINER=php
-DOCKER_COMPOSE=docker-compose -f backend/docker-compose.yml
+PHP_CONTAINER=symfony-php
+DOCKER_COMPOSE=docker-compose -f docker-compose.yml
 
 start:
 	$(DOCKER_COMPOSE) up -d

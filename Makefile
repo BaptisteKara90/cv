@@ -10,6 +10,12 @@ stop:
 build:
 	$(DOCKER_COMPOSE) up -d --build
 
+install-backend:
+	$(DOCKER_COMPOSE) run --rm $(PHP_CONTAINER) sh -c "\
+		cd /var/www/html && \
+		composer install \
+	"
+
 console:
 	docker-compose exec $(PHP_CONTAINER) php bin/console
 

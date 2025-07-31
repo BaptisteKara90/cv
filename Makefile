@@ -1,4 +1,14 @@
 PHP_CONTAINER=php
+DOCKER_COMPOSE=docker-compose -f backend/docker-compose.yml
+
+start:
+	$(DOCKER_COMPOSE) up -d
+
+stop:
+	$(DOCKER_COMPOSE) down
+
+build:
+	$(DOCKER_COMPOSE) up -d --build
 
 console:
 	docker-compose exec $(PHP_CONTAINER) php bin/console

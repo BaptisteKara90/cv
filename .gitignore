@@ -1,15 +1,14 @@
-# Backend Symfony
-/backend/symfony/vendor/
+# Symfony
 /backend/symfony/.env
-/backend/symfony/.env.dev
+/backend/symfony/.env.*
+/backend/symfony/vendor/
 
-# Frontend Next.js
-/frontend/node_modules/
-/frontend/.env
-/frontend/.env.local
+# Next.js
+/front/node_modules/
+/front/.env
+/front/.env.*
 
-# General
+# Global
 .env
 *.env
 .env.*
-.DS_Store

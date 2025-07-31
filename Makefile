@@ -3,6 +3,7 @@ DOCKER_COMPOSE=docker-compose -f docker-compose.yml
 
 start:
 	$(DOCKER_COMPOSE) up -d
+	sudo chown -R $$(id -u):$$(id -g) backend/symfony
 
 stop:
 	$(DOCKER_COMPOSE) down
@@ -16,8 +17,11 @@ install-backend:
 		composer install \
 	"
 
+bash:
+	docker-compose exec $(PHP_CONTAINER) bash
+
 console:
-	docker-compose exec $(PHP_CONTAINER) php bin/console
+	@docker-compose exec $(PHP_CONTAINER) php bin/console $(cmd)
 
 entity:
 	docker-compose exec $(PHP_CONTAINER) php bin/console make:entity

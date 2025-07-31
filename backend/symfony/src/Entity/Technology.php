@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\TechnologyCategory;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\TechnologyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -20,8 +21,8 @@ class Technology
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $category = null;
+    #[ORM\Column(enumType: TechnologyCategory::class)]
+    private TechnologyCategory $category;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $logo = null;
@@ -54,12 +55,12 @@ class Technology
         return $this;
     }
 
-    public function getCategory(): ?string
+    public function getCategory(): TechnologyCategory
     {
         return $this->category;
     }
 
-    public function setCategory(string $category): static
+    public function setCategory(TechnologyCategory $category): self
     {
         $this->category = $category;
 
